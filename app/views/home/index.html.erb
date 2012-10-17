@@ -1,0 +1,9 @@
+<div>
+  <%= form_tag search_home_index_path, :remote => true, :method => :get, :html => { :id => 'search_form' } do |f| %>
+    <%= label_tag :search, "Search for:" %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search" %>
+  <% end %>
+</div>
+<div id="search_results">
+</div>

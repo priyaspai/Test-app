@@ -1,0 +1,6 @@
+  <% search.each do |tweet| %>
+    <p>
+      <a href="https://twitter.com/<%=tweet.from_user%>/status/<%=tweet.id%>"><%= tweet.text %></a>
+      <%= link_to 'Save', links_path(:tweet_url => url_encode("https://twitter.com/#{tweet.from_user}/status/#{tweet.id}"), :tweet_id => tweet.id), :method => :post, :remote => true , :id => "p_#{tweet.id}"%>
+    </p>
+  <% end %>
