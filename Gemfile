@@ -43,3 +43,7 @@ gem 'rspec'
 #gem 'twitter'
 gem 'devise' , '2.1.2'
 gem 'edgar-twitter-search'
+
+group :production do
+  gem 'thin'
+end
