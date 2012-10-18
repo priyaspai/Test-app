@@ -44,6 +44,12 @@ gem 'rspec'
 gem 'devise' , '2.1.2'
 gem 'edgar-twitter-search'
 
+group :test, :development do
+  gem "rspec-rails", "~> 2.0"
+  gem "capybara"
+  gem "factory_girl"
+end
+
 group :production do
   gem 'thin'
 end
