@@ -4,10 +4,11 @@
   a:hover {text-decoration:underline;}
   a:active {text-decoration:underline;}
 </style>
-<% search.each do |tweet| %>
+<% search.each_with_index do |tweet, index| %>
   <p>
-  <a href="https://twitter.com/<%=tweet.from_user%>/status/<%=tweet.id%>"><%= tweet.text %></a>
-  <br/>
-  <%= link_to 'Save', links_path(:tweet_url => url_encode("https://twitter.com/#{tweet.from_user}/status/#{tweet.id}"), :tweet_id => tweet.id), :method => :post, :remote => true , :id => "p_#{tweet.id}"%>
+  <% if !tweet["entities"]["urls"].blank? %>
+    <%= tweet["entities"]["urls"][0]["expanded_url"] %>
+    <%= link_to 'Save Link', links_path(:tweet_url => url_encode(tweet["entities"]["urls"][0]["expanded_url"]), :tweet_id => index), :method => :post, :remote => true , :id => "p_#{index}" %>
+  <% end %>
   </p>
 <% end %>
