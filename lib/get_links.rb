@@ -20,7 +20,7 @@ module GetLinks
     end
 
     results = parsed_json["results"]
-    #results.collect{|x| x["entities"]["urls"][0]["expanded_url"]
+    #results.collect{|x| x["entities"]["urls"].collect{|y| y["expanded_url"]}}
     return results
   end
 

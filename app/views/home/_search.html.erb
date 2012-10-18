@@ -5,14 +5,15 @@
   a:active {text-decoration:underline;}
 </style>
 <%= form_tag links_path, :remote => true, :method => :post, :html => { :id => 'save_form' } do |f| %>
-<% search.each_with_index do |tweet, index| %>
-  <p>
-  <% if !tweet["entities"]["urls"].blank? %>
-    <%= check_box_tag 'tweet_url[]', url_encode(tweet["entities"]["urls"][0]["expanded_url"]), (checked=false) %>
-    <%= tweet["entities"]["urls"][0]["expanded_url"] %>
-    <%#= link_to 'Save Link', links_path(:tweet_url => url_encode(tweet["entities"]["urls"][0]["expanded_url"]), :tweet_id => index), :method => :post, :remote => true , :id => "p_#{index}" %>
+  <% search.each_with_index do |tweet, index| %>
+    <p>
+    <% if !tweet["entities"]["urls"].blank? %>
+      <% tweet["entities"]["urls"].each do |url| %>
+        <%= check_box_tag 'tweet_url[]', url_encode(url["expanded_url"]), (checked=false) %>
+        <%= url["expanded_url"] %>
+      <% end %>
+    <% end %>
+    </p>
   <% end %>
-  </p>
-<% end %>
-<%= submit_tag "Save" %>
+  <%= submit_tag "Save" %>
 <% end %>
