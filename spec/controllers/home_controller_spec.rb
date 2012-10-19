@@ -25,7 +25,8 @@ describe HomeController do
     it "should raise error" do
       get 'search', {:search => "", :format => "js"}
       flash[:notice].should be_eql("Error in Search" )
-      response.should redirect_to(:root)
+      #response.should redirect_to(:root)
+      response.should be_success
     end
   end
 

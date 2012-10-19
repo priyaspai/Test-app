@@ -3,6 +3,9 @@ class HomeController < ApplicationController
   include GetLinks
 
   def index
+    respond_to do |format|
+      format.html
+    end
   end
 
   def search
@@ -12,7 +15,11 @@ class HomeController < ApplicationController
         format.js
       end
     rescue Exception => e
-      redirect_to(root_path, :flash => { :notice => "Error in Search" }) and return
+      respond_to do |format|
+        flash[:notice] = "Error in Search"
+        @error = e.to_s
+        format.js { render 'search_error.js.erb' }
+      end
     end
   end
 
