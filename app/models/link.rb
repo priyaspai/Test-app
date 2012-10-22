@@ -3,8 +3,7 @@ class Link < ActiveRecord::Base
 
   belongs_to :user
 
-  validates_presence_of :url
-  validates_uniqueness_of :url, :scope => :user_id, :message => "Link is already saved"
+  validates :url, :presence => true, :uniqueness => {:scope => :user_id, :message => "Link is already saved"}
 
   scope :recent, order("created_at DESC")
 end
