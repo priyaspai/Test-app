@@ -21,7 +21,7 @@ test:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: tweet_development
+  database: tweet
   pool: 5
   username: root
   password: 
@@ -32,7 +32,7 @@ production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: tweet
+  database: tweet_production
   pool: 5
   username: root
   password: 
