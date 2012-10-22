@@ -5,4 +5,6 @@ class Link < ActiveRecord::Base
 
   validates_presence_of :url
   validates_uniqueness_of :url, :scope => :user_id, :message => "Link is already saved"
+
+  scope :recent, order("created_at DESC")
 end

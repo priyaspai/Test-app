@@ -11,6 +11,11 @@ Tweet::Application.routes.draw do
     end
   end
   resources :links, :only => [:create]
+  resources :users, :only => [] do
+    member do
+      get 'links'
+    end
+  end
   root :to => "home#index"
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

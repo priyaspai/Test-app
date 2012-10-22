@@ -1,0 +1,8 @@
+<% if current_user.id == params[:id].to_i %>
+  My Links
+  <% @links.each do |link| %>
+    <p><%= link.url %></p>
+  <% end %>
+<% else %>
+  You are not authorized to view this page
+<% end %>
