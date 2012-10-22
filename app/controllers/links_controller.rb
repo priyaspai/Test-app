@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
 
+  respond_to :js
 
   def create
     @tweet_urls = params[:tweet_url]
